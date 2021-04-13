@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SceneKitRenderFoundationDemo</string>
+    <string name="btn_render_view_demo_text">RenderView Demo</string>
+</resources>
