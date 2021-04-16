@@ -1,4 +1,4 @@
-# SceneKitDemo
+# Scene Kit Render Foundation Demo
 
 ## Table of Contents
 
@@ -38,7 +38,5 @@ See details: [HUAWEI Scene Kit Development Preparation](https://developer.huawei
 ## License
 
 SceneKitRenderFoundationDemo is licensed under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-
 3D model 'Spinosaurus_animation' (no modified) published by seirogan under the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/legalcode).
-
 Learn more about [Spinosaurus_animation](https://sketchfab.com/3d-models/spinosaurus-animation-c11709dbf9e3472f9533343f1f342564).
