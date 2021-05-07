@@ -10,13 +10,13 @@
 
 ## Introduction
 
-The SceneKitDemo app demonstrates a sample to call the SceneView.
+The SceneKitDemo app demonstrates a sample to call the RenderView.
 
 [Read more about HMS Scene Kit](<https://developer.huawei.com/consumer/en/hms/huawei-scenekit>).
 
 ## Getting-Started
 
-1. Check whether the Android studio development environment is ready. Open the sample code project directory with file "build.gradle" in Android Studio. Run SceneKitDemo on your divice or simulator which have installed latest Huawei Mobile Service(HMS).
+1. Check whether the Android studio development environment is ready. Open the sample code project directory with file "build.gradle" in Android Studio.
 2. Register a [HUAWEI account](https://developer.huawei.com/consumer/en/).
 3. Create an app and configure the app information in AppGallery Connect.
 See details: [HUAWEI Scene Kit Development Preparation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/dev-process-0000001054326746-V5)
