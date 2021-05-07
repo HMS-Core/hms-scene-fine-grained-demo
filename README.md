@@ -1,5 +1,5 @@
 # Scene Kit Render Foundation Demo
-
+English | [中文](https://github.com/HMS-Core/hms-scene-fine-grained-demo/blob/master/README-zh.md)
 ## Table of Contents
 
 * [Introduction](#introduction)
@@ -10,7 +10,7 @@
 
 ## Introduction
 
-The SceneKitDemo app demonstrates a sample to call the RenderView.
+The SceneKitRenderFoundationDemo app demonstrates a sample to call the RenderView.
 
 [Read more about HMS Scene Kit](<https://developer.huawei.com/consumer/en/hms/huawei-scenekit>).
 
