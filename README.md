@@ -1,5 +1,5 @@
-# Scene Kit Render Foundation Demo
-English | [中文](https://github.com/HMS-Core/hms-scene-fine-grained-demo/blob/master/README-zh.md)
+# HMS SceneKit RenderFoundation Demo
+English | [中文](README_ZH.md)
 ## Table of Contents
 
 * [Introduction](#introduction)
@@ -19,7 +19,7 @@ The SceneKitRenderFoundationDemo app demonstrates a sample to call the RenderVie
 1. Check whether the Android studio development environment is ready. Open the sample code project directory with file "build.gradle" in Android Studio.
 2. Register a [HUAWEI account](https://developer.huawei.com/consumer/en/).
 3. Create an app and configure the app information in AppGallery Connect.
-See details: [HUAWEI Scene Kit Development Preparation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/dev-process-0000001054326746-V5)
+See details: [HUAWEI Scene Kit Development Preparation](https://developer.huawei.com/consumer/en/doc/development/graphics-Guides/dev-process-0000001064186384)
 4. To build this demo, please first import the demo in the Android Studio (3.5+).
 5. Run the sample on your Android device or emulator.
 
@@ -32,8 +32,17 @@ See details: [HUAWEI Scene Kit Development Preparation](https://developer.huawei
 
 ## Result
 
-<img src="https://github.com/HMS-Core/hms-scene-fine-grained-demo/blob/master/SceneKitRenderFoundationDemo/screenshot_1.png" width = 30% height = 30%> 
-<img src="https://github.com/HMS-Core/hms-scene-fine-grained-demo/blob/master/SceneKitRenderFoundationDemo/screenshot_2.png" width = 30% height = 30%>
+<img src="SceneKitRenderFoundationDemo/screenshot_1.png" width = 30% height = 30%> 
+<img src="SceneKitRenderFoundationDemo/screenshot_2.png" width = 30% height = 30%>
+
+## Technical Support
+
+If you are still evaluating HMS Core, obtain the latest information about HMS Core and share your insights with other developers at [Reddit](https://www.reddit.com/r/HuaweiDevelopers/.).
+
+- To resolve development issues, please go to [Stack Overflow](https://stackoverflow.com/questions/tagged/huawei-mobile-services?tab=Votes). You can ask questions below the huawei-mobile-services tag, and Huawei R&D experts can solve your problem online on a one-to-one basis.
+- To join the developer discussion, please visit [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/forum/hms-core).
+
+If you have problems using the sample code, submit [issues](https://github.com/HMS-Core/hms-scene-fine--grained-demo/issues) and [pull requests](https://github.com/HMS-Core/hms-scene-fine--grained-demo/pulls) to the repository.
 
 ## License
 

@@ -29,6 +29,6 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.huawei.scenekit:scenekit-render-foundation:5.1.0.300'
-    implementation 'com.huawei.scenekit:scenekit-render-extension:5.1.0.300'
+    implementation 'com.huawei.scenekit:scenekit-render-foundation:6.0.0.301'
+    implementation 'com.huawei.scenekit:scenekit-render-extension:6.0.0.301'
 }

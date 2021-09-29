@@ -1,3 +1,19 @@
+/*
+ * Copyright 2021 Huawei Technologies Co., Ltd.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.huawei.hms.scene.demo.render;
 
 import android.net.Uri;
@@ -22,20 +38,31 @@ import com.huawei.hms.scene.sdk.render.Node;
 import com.huawei.hms.scene.sdk.render.RenderView;
 import com.huawei.hms.scene.sdk.render.Renderable;
 import com.huawei.hms.scene.sdk.render.Resource;
+import com.huawei.hms.scene.sdk.render.ResourceFactory;
 import com.huawei.hms.scene.sdk.render.Texture;
 import com.huawei.hms.scene.sdk.render.Transform;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+/**
+ * SampleActivity.
+ *
+ * @author HUAWEI
+ * @since 2021-8-18
+ */
 public class SampleActivity extends AppCompatActivity {
     private static final class ModelLoadEventListener implements Resource.OnLoadEventListener<Model> {
         private final WeakReference<SampleActivity> weakRef;
 
-        public ModelLoadEventListener(WeakReference<SampleActivity> weakRef) {
+        ModelLoadEventListener(WeakReference<SampleActivity> weakRef) {
             this.weakRef = weakRef;
         }
 
+        /**
+         * Model loading event callback.
+         * @param model model.
+         */
         @Override
         public void onLoaded(Model model) {
             SampleActivity sampleActivity = weakRef.get();
@@ -45,6 +72,7 @@ public class SampleActivity extends AppCompatActivity {
             }
 
             sampleActivity.model = model;
+            // Load the model to the scene.
             sampleActivity.modelNode = sampleActivity.renderView.getScene().createNodeFromModel(model);
             sampleActivity.modelNode.getComponent(Transform.descriptor())
                 .setPosition(new Vector3(0.f, 0.f, 0.f))
@@ -55,16 +83,18 @@ public class SampleActivity extends AppCompatActivity {
                 if (renderable != null) {
                     renderable
                         .setCastShadow(true)
+                        // Enable the function of receiving shadows for a descendant node.
                         .setReceiveShadow(true);
                 }
             });
-
+            // Obtain the Animator component.
             Animator animator = sampleActivity.modelNode.getComponent(Animator.descriptor());
             if (animator != null) {
                 List<String> animations = animator.getAnimations();
                 if (animations.isEmpty()) {
                     return;
                 }
+                // Set the animation playback parameters.
                 animator
                     .setInverse(false)
                     .setRecycle(true)
@@ -74,22 +104,30 @@ public class SampleActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onException(Exception e) {
+        public void onException(Exception exception) {
             SampleActivity sampleActivity = weakRef.get();
             if (sampleActivity == null || sampleActivity.destroyed) {
                 return;
             }
-            Toast.makeText(sampleActivity, "failed to load model: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(sampleActivity,
+                "failed to load model: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
+    /**
+     * SkyBoxTextureLoadEventListener
+     */
     private static final class SkyBoxTextureLoadEventListener implements Resource.OnLoadEventListener<Texture> {
         private final WeakReference<SampleActivity> weakRef;
 
-        public SkyBoxTextureLoadEventListener(WeakReference<SampleActivity> weakRef) {
+        SkyBoxTextureLoadEventListener(WeakReference<SampleActivity> weakRef) {
             this.weakRef = weakRef;
         }
 
+        /**
+         * Skybox texture loading event callback.
+         * @param texture Skybox texture.
+         */
         @Override
         public void onLoaded(Texture texture) {
             SampleActivity sampleActivity = weakRef.get();
@@ -99,26 +137,35 @@ public class SampleActivity extends AppCompatActivity {
             }
 
             sampleActivity.skyBoxTexture = texture;
+            // Set the skybox texture for the scene.
             sampleActivity.renderView.getScene().setSkyBoxTexture(texture);
         }
 
         @Override
-        public void onException(Exception e) {
+        public void onException(Exception exception) {
             SampleActivity sampleActivity = weakRef.get();
             if (sampleActivity == null || sampleActivity.destroyed) {
                 return;
             }
-            Toast.makeText(sampleActivity, "failed to load texture: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(sampleActivity,
+                "failed to load texture: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
+    /**
+     * SpecularEnvTextureLoadEventListener
+     */
     private static final class SpecularEnvTextureLoadEventListener implements Resource.OnLoadEventListener<Texture> {
         private final WeakReference<SampleActivity> weakRef;
 
-        public SpecularEnvTextureLoadEventListener(WeakReference<SampleActivity> weakRef) {
+        SpecularEnvTextureLoadEventListener(WeakReference<SampleActivity> weakRef) {
             this.weakRef = weakRef;
         }
 
+        /**
+         * Specular texture loading event callback.
+         * @param texture Specular texture.
+         */
         @Override
         public void onLoaded(Texture texture) {
             SampleActivity sampleActivity = weakRef.get();
@@ -128,26 +175,35 @@ public class SampleActivity extends AppCompatActivity {
             }
 
             sampleActivity.specularEnvTexture = texture;
+            // Set the specular texture for the scene.
             sampleActivity.renderView.getScene().setSpecularEnvTexture(texture);
         }
 
         @Override
-        public void onException(Exception e) {
+        public void onException(Exception exception) {
             SampleActivity sampleActivity = weakRef.get();
             if (sampleActivity == null || sampleActivity.destroyed) {
                 return;
             }
-            Toast.makeText(sampleActivity, "failed to load texture: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(sampleActivity,
+                "failed to load texture: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
+    /**
+     * DiffuseEnvTextureLoadEventListener
+     */
     private static final class DiffuseEnvTextureLoadEventListener implements Resource.OnLoadEventListener<Texture> {
         private final WeakReference<SampleActivity> weakRef;
 
-        public DiffuseEnvTextureLoadEventListener(WeakReference<SampleActivity> weakRef) {
+        DiffuseEnvTextureLoadEventListener(WeakReference<SampleActivity> weakRef) {
             this.weakRef = weakRef;
         }
 
+        /**
+         * Diffuse texture loading event callback.
+         * @param texture Diffuse texture.
+         */
         @Override
         public void onLoaded(Texture texture) {
             SampleActivity sampleActivity = weakRef.get();
@@ -157,25 +213,24 @@ public class SampleActivity extends AppCompatActivity {
             }
 
             sampleActivity.diffuseEnvTexture = texture;
+            // Set the diffuse texture for the scene.
             sampleActivity.renderView.getScene().setDiffuseEnvTexture(texture);
         }
 
         @Override
-        public void onException(Exception e) {
+        public void onException(Exception exception) {
             SampleActivity sampleActivity = weakRef.get();
             if (sampleActivity == null || sampleActivity.destroyed) {
                 return;
             }
-            Toast.makeText(sampleActivity, "failed to load texture: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(sampleActivity,
+                "failed to load texture: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     private boolean destroyed = false;
 
     private RenderView renderView;
-
-    private Node cameraNode;
-    private Node lightNode;
 
     private Model model;
     private Texture skyBoxTexture;
@@ -197,31 +252,59 @@ public class SampleActivity extends AppCompatActivity {
         addGestureEventListener();
     }
 
+    /**
+     * Resume rendering in RenderView.
+     */
     @Override
     protected void onResume() {
         super.onResume();
         renderView.resume();
     }
 
+    /**
+     * Pause rendering in RenderView.
+     */
     @Override
     protected void onPause() {
         super.onPause();
         renderView.pause();
     }
 
+    /**
+     * Destroy the RenderView.
+     */
     @Override
     protected void onDestroy() {
         destroyed = true;
         renderView.destroy();
+        if (model != null) {
+            Model.destroy(model);
+        }
+        if (skyBoxTexture != null) {
+            Texture.destroy(skyBoxTexture);
+        }
+        if (specularEnvTexture != null) {
+            Texture.destroy(specularEnvTexture);
+        }
+        if (diffuseEnvTexture != null) {
+            Texture.destroy(diffuseEnvTexture);
+        }
+        ResourceFactory.getInstance().gc();
         super.onDestroy();
     }
 
+    /**
+     * Load model.
+     */
     private void loadModel() {
         Model.builder()
             .setUri(Uri.parse("Spinosaurus_animation/scene.gltf"))
             .load(this, new ModelLoadEventListener(new WeakReference<>(this)));
     }
 
+    /**
+     * Load skybox & specular & diffuse texture.
+     */
     private void loadTextures() {
         Texture.builder()
             .setUri(Uri.parse("Forest/output_skybox.dds"))
@@ -234,12 +317,16 @@ public class SampleActivity extends AppCompatActivity {
             .load(this, new DiffuseEnvTextureLoadEventListener(new WeakReference<>(this)));
     }
 
+    /**
+     * Prepare scene.
+     */
     private void prepareScene() {
         WindowManager windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         DisplayMetrics displayMetrics = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(displayMetrics);
 
-        cameraNode = renderView.getScene().createNode("mainCameraNode");
+        // Add the Camera component to the node.
+        Node cameraNode = renderView.getScene().createNode("mainCameraNode");
         cameraNode.addComponent(Camera.descriptor())
             .setProjectionMode(Camera.ProjectionMode.PERSPECTIVE)
             .setNearClipPlane(.1f)
@@ -250,7 +337,8 @@ public class SampleActivity extends AppCompatActivity {
         cameraNode.getComponent(Transform.descriptor())
             .setPosition(new Vector3(0, 5.f, 30.f));
 
-        lightNode = renderView.getScene().createNode("mainLightNode");
+        // Add the Light component to the node.
+        Node lightNode = renderView.getScene().createNode("mainLightNode");
         lightNode.addComponent(Light.descriptor())
             .setType(Light.Type.POINT)
             .setColor(new Vector3(1.f, 1.f, 1.f))
@@ -260,7 +348,11 @@ public class SampleActivity extends AppCompatActivity {
             .setPosition(new Vector3(3.f, 3.f, 3.f));
     }
 
+    /**
+     * addGestureEventListener.
+     */
     private void addGestureEventListener() {
+        // Create a slide gesture processor.
         gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
@@ -271,6 +363,7 @@ public class SampleActivity extends AppCompatActivity {
                 return true;
             }
         });
+        // Create a slide gesture processor.
         scaleGestureDetector = new ScaleGestureDetector(this, new ScaleGestureDetector.SimpleOnScaleGestureListener() {
             @Override
             public boolean onScale(ScaleGestureDetector detector) {
@@ -282,6 +375,7 @@ public class SampleActivity extends AppCompatActivity {
                 return true;
             }
         });
+        // Add gesture event listener to RenderView.
         renderView.addOnTouchEventListener(motionEvent -> {
             boolean result = scaleGestureDetector.onTouchEvent(motionEvent);
             result = gestureDetector.onTouchEvent(motionEvent) || result;
