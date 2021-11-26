@@ -1,5 +1,5 @@
 # 华为图形引擎服务原子化接口示例代码
-中文 | [English](https://github.com/HMS-Core/hms-scene-fine-grained-demo)
+中文 | [English](README.md)
 ## 目录
 
 * [简介](#简介)
