@@ -27,8 +27,8 @@ See details: [HUAWEI Scene Kit Development Preparation](https://developer.huawei
 
 * AndroidStuido 3.6.1 or a later version is recommended.
 * Java SDK 1.8 is recommended.
-* HMS Core (APK) 4.0.2.300 or later
-* EMUI 10.0 or later
+* HMS Core (APK) 4.0.2.300 or later.
+* EMUI 10.0 or later version is recommended.
 
 ## Result
 
